@@ -42,8 +42,9 @@ Team Member 2:
 
 
 Team Member 3:
- - Full Name: 
- - Womanium Program Enrollment ID (see Welcome Email, format- WQ24-xxxxxxxxxxxxxxx):
+ - Full Name: Murshed SK
+ - Womanium Program Enrollment ID (see Welcome Email, format- WQ24-xxxxxxxxxxxxxxx): WQ24-C2cpbdhbJn4yHXr
+
 
 
 ### Project Solution:
