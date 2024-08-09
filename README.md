@@ -51,7 +51,39 @@ Team Member 3:
 _Include a comprehensive summary of all important information about your project solution here._
 All necessary code files and any additional information required to judge your project solution should be included in the repository.
 
--Our project goal was to create a quantum circuit that simulates trotterized time evolution in a 2D transverse-field Ising model system, and mitigate noisy error in that system with Zero Noise Extrapolation.
+Our project goal was to create a quantum circuit that simulates Trotterized time evolution in a 2D transverse-field Ising model system, and mitigate noise in the system with Zero Noise Extrapolation (ZNE).
+
+The project includes multiple files showing the steps of the implementation, starting with a toy problem with only 4 qubits, all the way up to a scalable implementation that can run with a variable number of qubits and evolution steps, including a polynomial ZNE and exponential ZNE models.
+
+The solution includes an implementation of a simple noise simulation technique that's required to simulate the noise that would be present in a quantum processor, when using a simulator.
+
+
+**Repository Structure:**
+
+    ├── app             <- The directly executable code of the  scheduler.
+    ├── images          <- Holds README images.
+    ├── Notebooks       <- Jupyter notebooks of the steps of implementing the problem.
+    |   ├── 1 toy problem.ipynb               <- Jupyter notebook containing basic implementation of the toy problem.
+    |   ├── 2 expandable toy problem.ipynb    <- Jupyter notebook expanding of the implementation of the toy problem.
+    |   ├── 3 solution 2 layers.ipynb         <- Jupyter notebook containing and scalable version of the problem.
+    |   └── 4 final solution.ipynb            <- Jupyter notebook containing the final implementation including noise mitigation.
+    ├── Test Results    <- CSV files that maintains a small testing sample showing the effect of noise mitigation.
+    |   ├── test1.csv                         <- Holds results of running the first test from step 4 notebook.
+    |   └── test2.csv                         <- Holds results of running the second test from step 4 notebook.
+    ├── Classiq's Files <- Classiq formatted files such as QProg and QMod.
+    |   ├── QPrograms      <- Holds QProg files of different steps of the project.
+    |       ├── 4 Qubit Toy Problem Model.qprog                 <- Basic circuit of the toy problem.
+    |       ├── 16 Qubit Model.qprog                            <- 16 Qubit circuit as an expansion of the toy problem.
+    |       ├── Expandable Toy Problem Model.qprog              <- The resulting circuit of the scalable problem.
+    |       ├── Multiple Trotter Steps Model.qprog              <- Circuit with multiple Trotter steps.
+    |       └── Pauli Linblad Noise Model on Toy Problem.qprog  <- [Extra] a circuit implementation of Pauli Linblad Noise Model.
+    |   └── QModels      <- Holds QMod files of different steps of the implementation.
+    |       ├──  1 toy problem.qmod                             <- Basic implementation of the toy problem.
+    |       ├──  2 expandable toy problem.qmod                  <- Expanding of the implementation of the toy problem.
+    |       ├──  3 solution 2 layers.qmod                       <- Containing and scalable version of the problem.
+    |       └──  4 final solution.qmod                          <- Containing the final implementation including noise mitigation.
+    └────
+
 
 ### Project Presentation Deck:
 _Link a 5min. presentation recording or deck here._

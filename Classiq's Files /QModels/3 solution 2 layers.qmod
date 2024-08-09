@@ -1,0 +1,116 @@
+qfunc trotter_step(arr: qbit[]) {
+  apply_to_all<lambda(q) {
+    RX<0>(q);
+  }>(arr);
+  apply_to_all<lambda(q) {
+    invert {
+      S(q);
+    }
+  }>(arr);
+  within {
+    RY<1.5708>(arr[1]);
+  } apply {
+    CX(arr[0], arr[1]);
+  }
+  within {
+    RY<1.5708>(arr[3]);
+  } apply {
+    CX(arr[2], arr[3]);
+  }
+  within {
+    RY<1.5708>(arr[5]);
+  } apply {
+    CX(arr[4], arr[5]);
+  }
+  within {
+    RY<1.5708>(arr[7]);
+  } apply {
+    CX(arr[6], arr[7]);
+  }
+  within {
+    RY<1.5708>(arr[9]);
+  } apply {
+    CX(arr[8], arr[9]);
+  }
+  within {
+    RY<1.5708>(arr[11]);
+  } apply {
+    CX(arr[10], arr[11]);
+  }
+  within {
+    RY<1.5708>(arr[13]);
+  } apply {
+    CX(arr[12], arr[13]);
+  }
+  within {
+    RY<1.5708>(arr[15]);
+  } apply {
+    CX(arr[14], arr[15]);
+  }
+  apply_to_all<lambda(q) {
+    invert {
+      S(q);
+    }
+  }>(arr);
+  within {
+    RY<1.5708>(arr[2]);
+  } apply {
+    CX(arr[1], arr[2]);
+  }
+  within {
+    RY<1.5708>(arr[4]);
+  } apply {
+    CX(arr[3], arr[4]);
+  }
+  within {
+    RY<1.5708>(arr[6]);
+  } apply {
+    CX(arr[5], arr[6]);
+  }
+  within {
+    RY<1.5708>(arr[8]);
+  } apply {
+    CX(arr[7], arr[8]);
+  }
+  within {
+    RY<1.5708>(arr[10]);
+  } apply {
+    CX(arr[9], arr[10]);
+  }
+  within {
+    RY<1.5708>(arr[12]);
+  } apply {
+    CX(arr[11], arr[12]);
+  }
+  within {
+    RY<1.5708>(arr[14]);
+  } apply {
+    CX(arr[13], arr[14]);
+  }
+  within {
+    RY<1.5708>(arr[15]);
+  } apply {
+    CX(arr[0], arr[15]);
+  }
+}
+
+qfunc trotterized_time_evolution(arr: qbit[]) {
+  trotter_step(arr);
+  trotter_step(arr);
+  trotter_step(arr);
+  trotter_step(arr);
+}
+
+qfunc main(output expectation_value: qbit) {
+  reg: qbit[];
+  allocate<16>(reg);
+  allocate<1>(expectation_value);
+  within {
+    hadamard_transform(expectation_value);
+  } apply {
+    control (expectation_value) {
+      trotterized_time_evolution(reg);
+    }
+  }
+}
+

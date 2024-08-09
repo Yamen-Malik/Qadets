@@ -1,0 +1,53 @@
+qfunc trotter_step(arr: qbit[]) {
+  apply_to_all<lambda(q) {
+    RX<0>(q);
+  }>(arr);
+  apply_to_all<lambda(q) {
+    invert {
+      S(q);
+    }
+  }>(arr);
+  within {
+    RY<1.5708>(arr[1]);
+  } apply {
+    CX(arr[0], arr[1]);
+  }
+  within {
+    RY<1.5708>(arr[3]);
+  } apply {
+    CX(arr[2], arr[3]);
+  }
+  apply_to_all<lambda(q) {
+    invert {
+      S(q);
+    }
+  }>(arr);
+  within {
+    RY<1.5708>(arr[2]);
+  } apply {
+    CX(arr[0], arr[2]);
+  }
+  within {
+    RY<1.5708>(arr[3]);
+  } apply {
+    CX(arr[1], arr[3]);
+  }
+}
+
+qfunc trotterized_time_evolution(arr: qbit[]) {
+  trotter_step(arr);
+}
+
+qfunc main(output expectation_value: qbit) {
+  reg: qbit[];
+  allocate<4>(reg);
+  allocate<1>(expectation_value);
+  within {
+    hadamard_transform(expectation_value);
+  } apply {
+    control (expectation_value) {
+      trotterized_time_evolution(reg);
+    }
+  }
+}
+

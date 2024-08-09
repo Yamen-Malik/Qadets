@@ -1,0 +1,74 @@
+qfunc trotter_step(a: qbit, b: qbit, c: qbit, d: qbit) {
+  RX<0>(a);
+  RX<0>(b);
+  RX<0>(c);
+  RX<0>(d);
+  invert {
+    S(a);
+  }
+  invert {
+    S(b);
+  }
+  within {
+    RY<1.5708>(b);
+  } apply {
+    CX(a, b);
+  }
+  invert {
+    S(c);
+  }
+  invert {
+    S(d);
+  }
+  within {
+    RY<1.5708>(d);
+  } apply {
+    CX(c, d);
+  }
+  invert {
+    S(a);
+  }
+  invert {
+    S(c);
+  }
+  within {
+    RY<1.5708>(c);
+  } apply {
+    CX(a, c);
+  }
+  invert {
+    S(b);
+  }
+  invert {
+    S(d);
+  }
+  within {
+    RY<1.5708>(d);
+  } apply {
+    CX(b, d);
+  }
+}
+
+qfunc trotterized_time_evolution(a: qbit, b: qbit, c: qbit, d: qbit) {
+  trotter_step(a, b, c, d);
+}
+
+qfunc main(output expectation_value: qbit) {
+  a: qbit;
+  b: qbit;
+  c: qbit;
+  d: qbit;
+  allocate<1>(a);
+  allocate<1>(b);
+  allocate<1>(c);
+  allocate<1>(d);
+  allocate<1>(expectation_value);
+  within {
+    hadamard_transform(expectation_value);
+  } apply {
+    control (expectation_value) {
+      trotterized_time_evolution(a, b, c, d);
+    }
+  }
+}
+
