@@ -54,3 +54,5 @@ All necessary code files and any additional information required to judge your p
 ### Project Presentation Deck:
 _Link a 5min. presentation recording or deck here._
 
+[Presentation](https://docs.google.com/presentation/d/1SoQNyLU56uhwORmT4s8IuVS5dB01WVR3p9xGnzoCA5E/edit?usp=sharing)
+
