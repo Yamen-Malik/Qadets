@@ -49,7 +49,9 @@ Team Member 3:
 
 ### Project Solution:
 _Include a comprehensive summary of all important information about your project solution here._
-All necessary code files and any additional information required to judge your project solution should be included in the repository. 
+All necessary code files and any additional information required to judge your project solution should be included in the repository.
+
+-Our project goal was to create a quantum circuit that simulates trotterized time evolution in a 2D transverse-field Ising model system, and mitigate noisy error in that system with Zero Noise Extrapolation.
 
 ### Project Presentation Deck:
 _Link a 5min. presentation recording or deck here._
