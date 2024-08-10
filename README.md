@@ -60,8 +60,6 @@ The solution includes an implementation of a simple noise simulation technique t
 
 **Repository Structure:**
 
-    ├── app             <- The directly executable code of the  scheduler.
-    ├── images          <- Holds README images.
     ├── Notebooks       <- Jupyter notebooks of the steps of implementing the problem.
     |   ├── 1 toy problem.ipynb               <- Jupyter notebook containing basic implementation of the toy problem.
     |   ├── 2 expandable toy problem.ipynb    <- Jupyter notebook expanding of the implementation of the toy problem.
